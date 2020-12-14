@@ -1,22 +1,23 @@
-import React from "react"
-import gsap, { Power1 } from "gsap"
+import React from "react";
+import gsap, { Power1 } from "gsap";
 
-const Turtle: React.FC<{ index: number }> = ({ index }) => { // Since there are two animated turtles, add an index to ensure each id attribute is unique
-  const turtle = React.useRef<SVGSVGElement>(null)
-  const eye = React.useRef<SVGPathElement>(null)
-  const timeline = gsap.timeline({ repeat: -1, yoyo: true })
+const Turtle: React.FC<{ index: number }> = ({ index }) => {
+  // Since there are two animated turtles, add an index to ensure each id attribute is unique
+  const turtle = React.useRef<SVGSVGElement>(null);
+  const eye = React.useRef<SVGPathElement>(null);
+  const timeline = gsap.timeline({ repeat: -1, yoyo: true });
   React.useEffect(() => {
     timeline.fromTo(
       turtle.current,
       { rotationX: -5, transformOrigin: "bottom 0%", duration: 2.5 },
       { rotation: 5, ease: Power1.easeInOut, duration: 2.5 },
       0
-    )
+    );
     timeline.to(
       turtle.current,
       { y: -36, ease: Power1.easeInOut, duration: 1.5 },
       0
-    )
+    );
     timeline.fromTo(
       eye.current,
       {
@@ -32,8 +33,8 @@ const Turtle: React.FC<{ index: number }> = ({ index }) => { // Since there are 
         duration: 0.1,
       },
       0
-    )
-  }, [])
+    );
+  }, []);
   return (
     <svg
       ref={turtle}
@@ -234,7 +235,7 @@ const Turtle: React.FC<{ index: number }> = ({ index }) => { // Since there are 
         </g>
       </g>
     </svg>
-  )
-}
+  );
+};
 
-export default Turtle
+export default Turtle;
